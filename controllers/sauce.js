@@ -1,4 +1,5 @@
-const Thing = require("../models/Thing");
+const Sauce = require('../models/Sauce');
+const ObjectId = require('mongoose').Types.ObjectId; // help @ 44:30
 
 
 //exports.createThing = (req, res, next) => {
