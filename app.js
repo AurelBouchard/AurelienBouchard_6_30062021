@@ -9,11 +9,11 @@ const path = require('path');
 const app = express();
 
 // mongoose.connect : Aurelien have restricted admin rights !!
-mongoose.connect('mongodb+srv://Aurelien:iSx37QpbdjWSE2Y@users.fpxp5.mongodb.net/sopekocko?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://Aurelien:iSx37QpbdjWSE2Y@hotsauces.fpxp5.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
     { useNewUrlParser: true,
         useUnifiedTopology: true })
-    .then(() => console.log('Connexion à MongoDB réussie !'))
-    .catch(() => console.log('Connexion à MongoDB échouée !'));
+    .then(() => console.log("Connexion à MongoDB réussie !"))
+    .catch(() => console.log("Connexion à MongoDB échouée !"));
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -22,11 +22,12 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use(bodyParser.json());
+
+app.use(bodyParser.json()); // DOES NOT HANDLE MULTIPART BODIES !!
 
 app.use('/images', express.static(path.join(__dirname, 'images')));
-app.use("/api/auth", userRoutes); // /api/auth/signup  +   /api/auth/login
-app.use("/api/sauces", sauceRoutes);
+app.use('/api/sauces', sauceRoutes);    // / + /:id + /:id/like
+app.use('/api/auth', userRoutes);       // /api/auth/signup  +   /api/auth/login
 
 console.log("youhou !!");
 

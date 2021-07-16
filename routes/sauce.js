@@ -1,17 +1,23 @@
 const express = require('express');
 const router = express.Router();
 
-//const stuffCtrl = require("../controllers/stuff");
-//const multer = require("../middleware/multer-config");
-//const auth = require("../middleware/auth");
+const auth = require('../middleware/auth');
+const multer = require("../middleware/multer-config");
+const sauceCtrl = require('../controllers/sauce');
 
-//router.post('/',    auth, multer, stuffCtrl.createThing);
-//router.get('/',     auth, stuffCtrl.getAllStuff);
-//router.get('/:id',  auth, stuffCtrl.findStuff);
-//router.put('/:id',  auth, multer, stuffCtrl.modifyStuff);
-//router.delete(':id', auth, stuffCtrl.removeStuff);
+// POST METHODS : Create sauce, add opinion
+router.post('/',            auth,   multer, sauceCtrl.create); //multer
+//router.post('/:id/like',    auth,   sauceCtrl.like);
 
-// CREATE ROUTES UPON SO PECOCKO GUIDE LINES !!
+// GET METHODS : Reach all or one sauces
+router.get('/',     auth,   sauceCtrl.getAll);
+//router.get('/:id',  auth,   sauceCtrl.findById);
+
+// PUT METHOD : Update sauce data
+//router.put(     '/:id',         auth, multer,   sauceCtrl.modify);
+
+// DELETE METHOD : Delete sauce
+//router.delete(  ':id',  auth,   sauceCtrl.remove);
 
 
 module.exports = router;
