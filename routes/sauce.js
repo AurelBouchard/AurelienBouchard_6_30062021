@@ -11,7 +11,7 @@ router.post('/',            auth,   multer, sauceCtrl.create); //multer
 
 // GET METHODS : Reach all or one sauces
 router.get('/',     auth,   sauceCtrl.getAll);
-//router.get('/:id',  auth,   sauceCtrl.findById);
+router.get('/:id',  auth,   sauceCtrl.findById);
 
 // PUT METHOD : Update sauce data
 //router.put(     '/:id',         auth, multer,   sauceCtrl.modify);
