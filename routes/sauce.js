@@ -14,7 +14,7 @@ router.get('/',     auth,   sauceCtrl.getAll);
 router.get('/:id',  auth,   sauceCtrl.findById);
 
 // PUT METHOD : Update sauce data
-//router.put(     '/:id',         auth, multer,   sauceCtrl.modify);
+router.put('/:id',  auth,   multer,   sauceCtrl.modify);
 
 // DELETE METHOD : Delete sauce
 router.delete('/:id',  auth,   sauceCtrl.remove);

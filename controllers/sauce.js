@@ -30,16 +30,17 @@ exports.findById = (req, res) => {
 };
 
 
-//exports.modifyStuff = (req, res, next) => {
-    //const thingObject = req.file ?
-        //{
-            //...JSON.parse(req.body.thing),
-            //imageUrl: `${req.protocol}://${req.get("host")}/images/${req.file.filename}`
-        //} : {...req.body};
-    //Thing.updateOne({ _id: req.params.id }, { ...thingObject, _id: req.params.id })
-        //.then(() => res.status(200).json({ message: 'Objet modifié !'}))
-        //.catch(error => res.status(400).json({ error }));
-//};
+exports.modify = (req, res) => {
+    const updatedSauce = req.file ?
+        {
+            ...JSON.parse(req.body.sauce),
+            imageUrl: `${req.protocol}://${req.get("host")}/images/${req.file.filename}`
+        } : {...req.body};
+
+    Sauce.updateOne({ _id: req.params.id }, { ...updatedSauce, _id: req.params.id })
+        .then(() => res.status(200).json({ message: "Sauce modifiée !"}))
+        .catch(error => res.status(400).json({ error }));
+};
 
 
 exports.remove = (req, res) => {
