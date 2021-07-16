@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const auth = require('../middleware/auth');
-const multer = require("../middleware/multer-config");
+const multer = require('../middleware/multer-config');
 const sauceCtrl = require('../controllers/sauce');
 
 // POST METHODS : Create sauce, add opinion
@@ -17,7 +17,7 @@ router.get('/:id',  auth,   sauceCtrl.findById);
 //router.put(     '/:id',         auth, multer,   sauceCtrl.modify);
 
 // DELETE METHOD : Delete sauce
-//router.delete(  ':id',  auth,   sauceCtrl.remove);
+router.delete('/:id',  auth,   sauceCtrl.remove);
 
 
 module.exports = router;

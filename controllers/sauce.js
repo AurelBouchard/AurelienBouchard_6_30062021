@@ -23,7 +23,7 @@ exports.getAll = (req, res, next) => {
 };
 
 
-exports.findById = (req, res, next) => {
+exports.findById = (req, res) => {
     Sauce.findOne({ _id: req.params.id })
         .then(sauce => res.status(200).json(sauce))
         .catch(error => res.status(404).json({ error }));
@@ -42,8 +42,8 @@ exports.findById = (req, res, next) => {
 //};
 
 
-/*exports.remove = (req, res, next) => {
-    Sauce.deleteOne({_id: JSON.parse(req.params.id)})   // json.parse
-        .then(()=> res.status(200).json({message:"Sauce supprimée"}))
+exports.remove = (req, res) => {
+    Sauce.deleteOne({_id: req.params.id})
+        .then(()=> res.status(200).json({message:"Sauce supprimée "}))
         .catch(error => res.status(400).json({ error }));
-};*/
+};
