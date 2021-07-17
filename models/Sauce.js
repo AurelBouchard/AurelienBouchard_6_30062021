@@ -9,10 +9,10 @@ const sauceSchema = mongoose.Schema({
     mainPepper: {type: String, required: true},     // main ingredient
     imageUrl: {type: String, required: true},       // image file path
     heat: {type: Number,  required: true},          // how hot is the sauce 1: baby friendly, 10: spaceX ready
-    likes: {type: Number},                          // how many people like this sauce
-    dislikes: {type: Number},                       // how many people don't
-    usersLiked: [Number],                           // array of userId of whom who like the sauce
-    usersDisliked: [Number]                         // array of userId of whom who dont
+    likes: {type: Number, default: 0},              // how many people like this sauce
+    dislikes: {type: Number, default: 0},           // how many people don't
+    usersLiked: [String],                           // array of userId of whom who like the sauce
+    usersDisliked: [String]                         // array of userId of whom who dont
 });
 
 module.exports = mongoose.model("Sauce", sauceSchema);

@@ -6,8 +6,8 @@ const multer = require('../middleware/multer-config');
 const sauceCtrl = require('../controllers/sauce');
 
 // POST METHODS : Create sauce, add opinion
-router.post('/',            auth,   multer, sauceCtrl.create); //multer
-//router.post('/:id/like',    auth,   sauceCtrl.like);
+router.post('/',            auth,   multer,         sauceCtrl.create);
+router.post('/:id/like',    auth,      sauceCtrl.like); // likeManager,
 
 // GET METHODS : Reach all or one sauces
 router.get('/',     auth,   sauceCtrl.getAll);
