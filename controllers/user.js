@@ -4,6 +4,9 @@ const jwt = require('jsonwebtoken');
 
 
 exports.signUp = (req, res) => {
+    if (!isPswOk(req.body.password)) {
+        res.status(400).json({message: "Mot de passe trop faible"});
+        return 0}
     bcrypt.hash(req.body.password, 10)
         .then(hash =>{
             const user = new User({
@@ -44,3 +47,13 @@ exports.logIn = (req, res, next) => {
 
 };
 
+function isPswOk(password) {
+    // use regex : ^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})
+    // (?=.*[a-z]) => must includes lowercase
+    // (?=.*[A-Z]) => must includes uppercase
+    // (?=.*[0-9]) => must includes numbers
+    // (?=.*[?!@#$%^&*=|£²³`"'ø§€]) => must includes special char
+    // (?=.{8,}) => must be at least 8 chars long
+    const pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[?!@#$%^&*=|£²³`"'ø§€])(?=.{8,})/;
+    return pattern.test(password);
+}

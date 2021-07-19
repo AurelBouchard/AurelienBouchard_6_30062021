@@ -29,6 +29,4 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/sauces', sauceRoutes);    // / + /:id + /:id/like
 app.use('/api/auth', userRoutes);       // /api/auth/signup  +   /api/auth/login
 
-console.log("youhou !!");
-
 module.exports = app;

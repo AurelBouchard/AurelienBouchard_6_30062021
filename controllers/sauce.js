@@ -19,7 +19,6 @@ exports.like = (req, res) => {
     const opinion = req.body.like;  // 1 = like, 0 = unquote, -1 = dislike
     switch(opinion) {
         case 1:     // sauce is liked
-            console.log("tentage de like +1");
             Sauce.updateOne({ _id: req.params.id },
                 {
                     // increment N of likers
