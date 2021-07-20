@@ -36,6 +36,7 @@ const errorHandler = error => {
     }
 };
 
+// https.createServer need options {key and certificate} or {pfx and passphrase}
 const server = http.createServer(app);
 
 server.on('error', errorHandler);

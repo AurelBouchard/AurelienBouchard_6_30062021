@@ -22,8 +22,7 @@ exports.signUp = (req, res) => {
 };
 
 
-
-exports.logIn = (req, res, next) => {
+exports.logIn = (req, res) => {
     User.findOne({email: req.body.email})
         .then(user => {
             if (!user) {return res.status(401).json({error: "Utilisateur non trouvé."});}
@@ -46,6 +45,18 @@ exports.logIn = (req, res, next) => {
         .catch(error => res.status(500).json({error}));
 
 };
+
+
+exports.unsubscribe = (req, res) => {
+    // this endpoint is not handled by frontend by now
+    // in the future it will must provide a DELETE request from an authenticated and logged user
+
+    User.deleteOne({_id: req.params.id})
+        .then(()=> res.status(200).json({message:"Utilisateur supprimé"}))
+        .catch(error => res.status(400).json({ error }));
+
+};
+
 
 function isPswOk(password) {
     // use regex : ^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})
