@@ -1,16 +1,16 @@
 const express = require('express');
 const router = express.Router();
 
-const userCtrl = require('../controllers/user');
+const userController = require('../controllers/user');
 const auth = require('../middleware/auth');
 
 
-router.post("/login", userCtrl.logIn);
+router.post("/login", userController.logIn);
 
-router.post("/signup", userCtrl.signUp);
+router.post("/signup", userController.signUp);
 
 // bonus : RGPD compliant endpoint
-router.delete('/deluser/:id', auth, userCtrl.unsubscribe);
+router.delete('/deluser/:id', auth, userController.unsubscribe);
 
 
 module.exports = router;

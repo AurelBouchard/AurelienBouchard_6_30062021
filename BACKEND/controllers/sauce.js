@@ -41,7 +41,7 @@ exports.like = (req, res) => {
                                     // decrement N of likers then remove userId in list of likers
                                     { $inc: { likes: -1}, $pull: { usersLiked: req.body.userId} })
                                     .then( res.status(200).json({message: "sauce is not liked anymore"}) )
-                                    .catch(error => res.status(412).json({ error }));
+                                    .catch(error => res.status(404).json({ error }));
                             }
                         } catch (err) {console.log(err | "this sauce is not liked")}
 
@@ -56,7 +56,7 @@ exports.like = (req, res) => {
                         } catch (err) {console.log(err | "this sauce is not disliked")}
                     }
                 )
-                .catch(error => res.status(412).json({ error }));
+                .catch(error => res.status(404).json({ error }));
             break;
 
         case -1:    // sauce is disliked
