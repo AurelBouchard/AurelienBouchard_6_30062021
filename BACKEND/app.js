@@ -1,4 +1,7 @@
 // Author : AurelBouchard
+
+//"use strict"; // ???????????????????????????????????????????
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -6,10 +9,13 @@ const sauceRoutes = require('./routes/sauce');
 const userRoutes = require('./routes/user');
 const path = require('path');
 
+const dotenv = require('dotenv');
+dotenv.config({ path: path.join(__dirname, '.env') });
+
 const app = express();
 
-// mongoose.connect : Aurelien have restricted admin rights !!
-mongoose.connect('mongodb+srv://Aurelien:iSx37QpbdjWSE2Y@hotsauces.fpxp5.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+// connecting to mongoose using dotenv file
+mongoose.connect(process.env.SRV_URL,
     { useNewUrlParser: true,
         useUnifiedTopology: true })
     .then(() => console.log("Connexion à MongoDB réussie !"))

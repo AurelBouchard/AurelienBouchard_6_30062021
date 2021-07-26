@@ -35,7 +35,7 @@ exports.logIn = (req, res) => {
                         token:
                             jwt.sign(
                             {userId: user._id},
-                            "Quelleestlacouleurduchevalblancd'Henri4?",
+                                process.env.JWT_PASS_PHRASE,
                             {expiresIn: '8h'}
                         )
                     });
