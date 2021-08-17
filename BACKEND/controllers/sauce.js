@@ -53,7 +53,7 @@ exports.like = (req, res) => {
                                     .then( res.status(200).json({message: "sauce is not disliked anymore"}) )
                                     .catch(error => res.status(404).json({ error }));
                             }
-                        } catch (err) {console.log(err | "this sauce is not disliked")}
+                        } catch (err) {console.log(err | "this sauce is not disliked")};
                     }
                 )
                 .catch(error => res.status(404).json({ error }));
